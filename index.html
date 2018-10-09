@@ -7,7 +7,43 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	
+		</script>
+
+		<script type="text/javascript">
+			//change the hello message
+			function changeme(){
+				$("#hellomessage").html("This is Maggie again!");
+			}
+
+			function validate() {
+				//alert("Running validatef function");
+				var name = $("#name").val();
+				var message = $("#message").val();
+				//alert("name is " +name + " message is " + message)
+				var missing = [];
+				if(name == "") {
+					missing.push("name");
+				}
+				if(message == "") {
+					missing.push("message");
+				}
+				if(missing.length>0) {
+					$("#formerrors").html("You are missing: " + missing);
+					$("#formerrors").css("color", "red");
+				} else {
+					$("#formerrors").html("Thank you for submitting!");
+					$("#formerrors").css("color", "green");
+				}
+			}
+
+			function alertme(){
+				alert("Are you trying to press me?");
+			}
+
+
+		</script>
 
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -31,7 +67,8 @@
 			</nav>
 		<div class="jumbotron">
 			<h1>Advanced Web Design</h1>
-			<h3>Sup. It's Maggie.</h3>
+			<h3 id="hellomessage">It's Maggie!!!!!</h3>
+			<button class="btn btn-default" id="changeButton" onclick="changeme()" onmouseover="alertme()">Change Me</button>
 		</div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		   <!-- Indicators -->
@@ -48,7 +85,7 @@
 		    </div>
 
 		    <div class="item">
-		      <img src="rosesAWDC.jpg" alt="roses">
+		      <img src="rosesAWDC.jpg" alt="Roses">
 		    </div>
 
 			<div class="item">
@@ -86,11 +123,12 @@
 		<div id="messageform">
 			<h3>Send a message!</h3>
 			<p>Name:</p>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control" id="name">
 			<p>Message:</p>
-			<textarea rows="6" class="form-control">
+			<textarea rows="6" class="form-control" id="message">
 			</textarea>
-			<button class="btn btn-info">Send</button>
+			<button class="btn btn-info" onclick="validate()" >Send</button>
+			<h3 id=formerrors>Thank you for messaging!</h3>
 		</div>
 	</body>	
 </html>
